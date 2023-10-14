@@ -2,18 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="./assets/reset.css">
     <link rel="stylesheet" href="./assets/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Code Quiz</title>
 </head>
 
 <body>
-    <h2>Coding Quiz Challenge</h2>
-    <p>Try to answer the following code-related questions within the time limit
-        Keep in mind that incorrect answers will penalize your score/time 
-        by ten seconds!
-    </p>
-    <button>Start Quiz</button>
+    <header>
+        <a href="" id="highScores" >View High Scores</a>
+        <div id="time">Time: 75</div>
+    </header>
+
+    <main id="startContent">
+        <h2>Coding Quiz Challenge</h2>
+            <p>Try to answer the following code-related questions within the time limit
+            Keep in mind that incorrect answers will penalize your score/time 
+            by ten seconds!
+            </p>
+        <button id="quizBtn">Start Quiz</button>
+    </main>
+
     <script src="script.js"></script>
 </body>
 
