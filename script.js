@@ -64,21 +64,30 @@ quizBtn.addEventListener("click", function () {
 
 function correct(event) {
   if (event.target.textContent == questions[counter].answer) {
-    alert("correct answer");
+    alert("Correct answer!");
   } else {
-    alert("incorrect");
+    alert("Incorrect answer. You lose 10 seconds.");
     startTime -= 10;
   }
   counter++;
   console.log("here");
-  questionTitle.textContent = questions[counter].title;
-  choice1.textContent = questions[counter].options[0];
-  choice2.textContent = questions[counter].options[1];
-  choice3.textContent = questions[counter].options[2];
-  choice4.textContent = questions[counter].options[3];
+  if (counter == questions.length) {
+    lastPage();
+  } else {
+    questionTitle.textContent = questions[counter].title;
+    choice1.textContent = questions[counter].options[0];
+    choice2.textContent = questions[counter].options[1];
+    choice3.textContent = questions[counter].options[2];
+    choice4.textContent = questions[counter].options[3];
+  }
 }
 
 choice1.addEventListener("click", correct);
 choice2.addEventListener("click", correct);
 choice3.addEventListener("click", correct);
 choice4.addEventListener("click", correct);
+
+function lastPage() {
+  alert("Quiz completed! Your score: " + startTime);
+  clearInterval(timerInterval);
+}
