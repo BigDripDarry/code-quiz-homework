@@ -88,6 +88,26 @@ choice3.addEventListener("click", correct);
 choice4.addEventListener("click", correct);
 
 function lastPage() {
-  alert("Quiz completed! Your score: " + startTime);
   clearInterval(timerInterval);
+  const userInitials = prompt("Quize completed! Enter initials:");
+
+  if (userInitials) {
+    const userScore = {
+      initials: userInitials,
+      score: startTime,
+    };
+    const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+    highScores.push(userScore);
+    highScores.sort((a, b) => b.score - a.score);
+    localStorage.setItem("highScores", JSON.stringify(highScores));
+
+    alert(
+      "High Scores:\n" +
+        highScores
+          .map((score) => `${score.initials}: ${score.score}`)
+          .join("\n")
+    );
+  } else {
+    alert("Initials need to be entered to be saved!");
+  }
 }
