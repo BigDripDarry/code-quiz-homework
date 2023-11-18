@@ -1,3 +1,4 @@
+// vars for DOM
 const highScores = document.querySelector("#highScores");
 const quizBtn = document.querySelector("#quizBtn");
 const startContent = document.querySelector("#startContent");
@@ -10,10 +11,12 @@ const choice2 = document.querySelector("#choice2");
 const choice3 = document.querySelector("#choice3");
 const choice4 = document.querySelector("#choice4");
 
+// vars for quiz
 let counter = 0;
 let timerInterval;
 let startTime = 75;
 
+// var with an array of objects for the questions
 var questions = [
   {
     title: "dwadasdawdawd",
@@ -42,15 +45,18 @@ var questions = [
   },
 ];
 
+// funct to decrement time
 function decrementTime() {
   startTime--;
   timeEl.textContent = startTime;
 }
 
+// funct to unhide questions
 function displayQuestions() {
   questionSection.removeAttribute("class");
 }
 
+// funct to display questions and title
 quizBtn.addEventListener("click", function () {
   startContent.setAttribute("class", "hide");
   questionSection.classList.remove("hide");
@@ -62,6 +68,7 @@ quizBtn.addEventListener("click", function () {
   timerInterval = setInterval(decrementTime, 1000);
 });
 
+// funct to check answers and user interaction
 function correct(event) {
   if (event.target.textContent == questions[counter].answer) {
     alert("Correct answer!");
@@ -70,8 +77,8 @@ function correct(event) {
     startTime -= 10;
   }
   counter++;
-  console.log("here");
   if (counter == questions.length) {
+    // checks if last page, if not keep asking questions
     lastPage();
   } else {
     questionTitle.textContent = questions[counter].title;
@@ -82,11 +89,13 @@ function correct(event) {
   }
 }
 
+// for user interaction
 choice1.addEventListener("click", correct);
 choice2.addEventListener("click", correct);
 choice3.addEventListener("click", correct);
 choice4.addEventListener("click", correct);
 
+// funct for last page and displaying high scores
 function lastPage() {
   clearInterval(timerInterval);
   const userInitials = prompt("Quize completed! Enter initials:");
